@@ -1,0 +1,24 @@
+$bg: #010409;
+$error: #ff3c38;
+$success: #40d162;
+
+$text: #f4f7f5;
+$text-secondary: #c7c1c9;
+$text-inverted: $bg;
+$text-success: $success;
+$text-error: $error;
+
+body {
+	background-color: $bg;
+	color: $error;
+}
+
+p.error {
+	color: $text-error;
+}
+
+h1,
+h2,
+h3 {
+	color: $text;
+}
