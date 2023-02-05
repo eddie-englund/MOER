@@ -5,11 +5,11 @@ date: '1 Jan 2023'
 rating: 4
 img: {
   url: '/elden_ring.jpg',
-  attribution: 'Nintendo Inc',
-  origin: 'https://www.zelda.com/breath-of-the-wild/media'
+  attribution: 'Bandai Namaco',
+  origin: 'https://en.bandainamcoent.eu/elden-ring/elden-ring/media'
 }
 author: 'Golden Alias'
-details: ["props to brian"]
+details: []
 tags: ['open world', 'souls game', 'rpg']
 ---
 

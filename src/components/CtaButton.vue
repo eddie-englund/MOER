@@ -2,12 +2,13 @@
 defineProps({
 	text: { type: String, required: true },
 	withIcon: { type: Boolean, default: false },
-	primary: { type: Boolean, required: false, default: true },
+  primary: { type: Boolean, required: false, default: true },
+  disabled: { type: Boolean, default: false, }
 });
 </script>
 
 <template>
-	<button class="cta-button" :class="[primary ? 'primary' : 'secondary']">
+	<button class="cta-button" :class="[primary ? 'primary' : 'secondary', disabled ? 'disabled' : '']" :disabled="disabled">
 		<p>{{ text }}</p>
 		<div class="icon-container" v-if="withIcon">
 			<!-- Use slots to pass icon -->
@@ -29,7 +30,7 @@ defineProps({
 	gap: 1rem;
 	justify-content: center;
 	cursor: pointer;
-	transition: all 0.2s ease;
+	transition: all $transition-period;
 
 	&:hover {
 		opacity: 0.8;
@@ -60,5 +61,10 @@ defineProps({
 	.icon-container {
 		color: $white;
 	}
+}
+
+.cta-button.disabled {
+  opacity: 0.7;
+  cursor:not-allowed;
 }
 </style>

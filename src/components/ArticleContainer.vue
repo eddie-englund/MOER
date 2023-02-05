@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Article } from '../types/article';
-import { StarIcon } from '@heroicons/vue/24/solid';
+import { StarIcon } from '@heroicons/vue/24/solid/index.js';
 const props = defineProps({ articleDir: { type: String, required: true } });
 
 const { data } = await useAsyncData(`article-${props.articleDir}`, () =>
@@ -46,6 +46,7 @@ const { data } = await useAsyncData(`article-${props.articleDir}`, () =>
 .article-container {
 	img {
 		min-width: 100%;
+    max-width: 100%;
 		border-radius: $radius;
 		max-height: 20rem;
 		object-fit: cover;
@@ -59,11 +60,12 @@ const { data } = await useAsyncData(`article-${props.articleDir}`, () =>
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+    padding-top: 1rem;
 	}
 
 	.attribution {
 		color: $text-secondary;
-		transition: all 0.3s ease;
+		transition: all $transition-period;
 
 		&:hover {
 			color: $success;

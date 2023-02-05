@@ -4,11 +4,11 @@
 	<div class="app-wrapper">
 		<header>
 			<div class="inner-wrapper">
-				<h2>MOER</h2>
+				<nuxt-link to="/"><h2>MOER</h2></nuxt-link>
 				<nav>
 					<ul>
 						<li>
-							<NuxtLink to="/">Home</NuxtLink>
+							<nuxt-link to="/">Home</nuxt-link>
 						</li>
 						<li>
 							<nuxt-link to="/articles">Articles</nuxt-link>
@@ -17,7 +17,7 @@
 							<nuxt-link to="/categories">Categories</nuxt-link>
 						</li>
 						<li>
-							<nuxt-link to="/categories">About</nuxt-link>
+							<nuxt-link to="/about">About</nuxt-link>
 						</li>
 						<li>
 							<nuxt-link to="/login" class="login-btn">
@@ -28,7 +28,8 @@
 				</nav>
 			</div>
 		</header>
-		<NuxtPage />
+		<nuxt-page />
+		<footer-component />
 	</div>
 </template>
 
@@ -39,10 +40,18 @@ header {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	.inner-wrapper {
-		min-width: 1200px;
-		max-width: 1200px;
+		@include body-wrapper;
 		display: flex;
 		justify-content: space-between;
+		text-decoration: none;
+
+		h2 {
+			text-decoration: none;
+			transition: all $transition-period;
+			&:hover {
+				opacity: 0.7;
+			}
+		}
 	}
 
 	h2 {
@@ -64,18 +73,19 @@ header {
 			align-items: center;
 		}
 
-		a.router-link-active {
-			color: $white;
-		}
 		a {
 			color: $text-secondary;
 			text-decoration: none;
-			transition: all 0.2s ease;
+			transition: all $transition-period;
 
 			&:hover {
 				color: $text-success;
 				text-decoration: underline;
 			}
+		}
+
+    a.router-link-active {
+			color: $white;
 		}
 	}
 }
@@ -83,5 +93,17 @@ header {
 .featured-article {
 	@include body-wrapper;
 	margin: 0 auto;
+}
+
+footer {
+	border-top: 1px solid $gray;
+	min-height: 10rem;
+	margin-top: 5rem;
+
+	.content {
+		padding-top: 2rem;
+		@include body-wrapper;
+		margin: 0 auto;
+	}
 }
 </style>

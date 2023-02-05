@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ArrowRightIcon } from '@heroicons/vue/24/outline';
+import { ArrowRightIcon } from '@heroicons/vue/24/outline/index.js';
 import { DateTime } from 'luxon';
 
 defineProps({
@@ -11,42 +11,64 @@ defineProps({
 </script>
 
 <template>
-	<section class="hero-banner" :style="`background-image: url('${imageUrl}');`">
-		<div class="top-content">
-			<h1>{{ header }}</h1>
-			<p>{{ subheader }}</p>
-		</div>
-		<div class="bottom-content">
-			<p class="date">{{ DateTime.fromJSDate(date).toLocaleString(DateTime.DATE_MED) }}</p>
-			<cta-button :with-icon="true" text="Read article">
-				<arrow-right-icon />
-			</cta-button>
+	<section class="hero-banner">
+		<img :src="imageUrl" :alt="imageUrl" />
+		<div class="content">
+			<div class="top-content">
+				<h1>{{ header }}</h1>
+				<p>{{ subheader }}</p>
+			</div>
+			<div class="bottom-content">
+				<p class="date">
+					{{ DateTime.fromJSDate(date).toLocaleString(DateTime.DATE_MED) }}
+				</p>
+				<cta-button :with-icon="true" text="Read article">
+					<arrow-right-icon />
+				</cta-button>
+			</div>
 		</div>
 	</section>
 </template>
 
 <style lang="scss">
 .hero-banner {
-	min-width: 100%;
+	min-width: 1000px;
+	max-width: 1000px;
 	min-height: 20rem;
-	background-size: cover;
-	background-repeat: no-repeat;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-  cursor: pointer;
+	cursor: pointer;
+	border-radius: $radius;
+	transition: all $transition-period;
+	overflow: hidden;
+	position: relative;
 
-  transition: all .3s ease;
+	img {
+		opacity: 0.4;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: auto;
+	}
 
-  &:hover {
-    opacity: 0.8;
-  }
+	.content {
+		position: relative;
+		min-height: 100%;
+    min-width: 100%;
+    display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 .top-content {
 	h1 {
 		@include semi-bold;
-    font-size: 2em;
+		font-size: 2em;
 	}
 
 	p {

@@ -4,7 +4,7 @@ description: 'The legend of Zelda: Breath of the wild'
 date: '1 Jan 2023'
 rating: 5
 img: {
-  url: '/legend_of_zelda.png',
+  url: '/the_legend_of_zelda_full.jpg',
   attribution: ''
 }
 author: 'Golden Alias'
