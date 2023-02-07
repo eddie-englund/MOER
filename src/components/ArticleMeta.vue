@@ -18,8 +18,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .article-meta-container {
-	max-width: 15rem;
-	min-width: 10rem;
+	max-width: 14rem;
+	min-width: 12rem;
 	min-height: 10rem;
 	border-radius: $radius;
 	border: 1px solid $gray;
@@ -44,6 +44,9 @@ defineProps({
 
 	.title {
 		color: $text;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.tags {

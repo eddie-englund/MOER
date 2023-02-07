@@ -36,7 +36,7 @@ label {
 	a {
 		color: $success;
 		transition: all $transition-period;
-		
+
 		&:hover {
 			opacity: 0.8;
 		}
@@ -90,6 +90,7 @@ input {
 	border: 1px solid $gray;
 	padding: 0.5rem;
 	color: $text;
+  @include medium;
 
 	&::placeholder {
 		color: $text-secondary;

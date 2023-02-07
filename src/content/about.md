@@ -3,6 +3,7 @@ title: What is MOER?
 description: MOER is an open source game review website
 ---
 # About MOER
+
 \
 MOER is an open source game review website initally developed by [Eddie Englund](https://github.com/eddie-englund) in 2023 as side project to work together with his friends and so that he could learn more about Nuxt3 and all it's feautures.
 \

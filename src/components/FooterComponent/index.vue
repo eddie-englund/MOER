@@ -10,9 +10,9 @@ const handleInput = async (input?: string): Promise<void> => {
 	footerStore.email.validation = await tryCatch(
 		async () => await emailSchema.parseAsync(input),
 		() => 'Invalid email',
-  )();
+	)();
 
-  footerStore.email.inital = false;
+	footerStore.email.inital = false;
 };
 </script>
 
@@ -36,46 +36,76 @@ const handleInput = async (input?: string): Promise<void> => {
 								placeholder="Enter your email"
 								@input="(e) => handleInput((e.target as HTMLInputElement).value)"
 								@invalid="isLeft(footerStore.email.validation)"
-                :class="isRight(footerStore.email.validation) ? 'valid' : 'invalid'"
+								:class="
+									isRight(footerStore.email.validation) ? 'valid' : 'invalid'
+								"
 							/>
 						</div>
-						<cta-button text="Subscribe" :disabled="isLeft(footerStore.email.validation) || footerStore.email.inital"/>
+						<cta-button
+							text="Subscribe"
+							:disabled="
+								isLeft(footerStore.email.validation) || footerStore.email.inital
+							"
+						/>
 					</div>
-					<p class="error" v-if="isLeft(footerStore.email.validation)">
-						{{ footerStore.email.validation.left }}
+					<p
+						class="error"
+						:class="[
+							isLeft(footerStore.email.validation) ? 'invalid' : 'valid',
+						]"
+					>
+						{{
+							isLeft(footerStore.email.validation)
+								? footerStore.email.validation.left
+								: 'Invalid error'
+						}}
 					</p>
 				</div>
 			</div>
-      <div class="bottom-container">
-        <div class="footer-category">
-          <p class="category-header">Organisation</p>
-          <ul>
-            <li><nuxt-link to="/about">About</nuxt-link></li>
-            <li><nuxt-link to="/contact">Contact</nuxt-link></li>
-          </ul>
-        </div>
-        <div class="footer-category">
-          <p class="category-header">Legal</p>
-          <ul>
-            <li><nuxt-link to="/about">Privacy policy</nuxt-link></li>
-          </ul>
-        </div>
-      </div>
+			<div class="bottom-container">
+				<div class="footer-category">
+					<p class="category-header">Organisation</p>
+					<ul>
+						<li><nuxt-link to="/about">About</nuxt-link></li>
+						<li><nuxt-link to="/contact">Contact</nuxt-link></li>
+					</ul>
+				</div>
+				<div class="footer-category">
+					<p class="category-header">Legal</p>
+					<ul>
+						<li><nuxt-link to="/privacy-policy">Privacy policy</nuxt-link></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</footer>
 </template>
 
 <style lang="scss" scoped>
-.content-container {
+.footer-container {
+	display: flex;
+	justify-content: center;
 	padding: 1rem;
+}
+.content-container {
+	@include body-wrapper;
+	min-height: 15rem;
+	margin-top: 2%;
 }
 .top-container {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 
 	.input-container,
 	.email-container {
 		display: flex;
+	}
+
+	.error.valid {
+		visibility: hidden;
+	}
+	.error.invalid {
+		visibility: visible;
 	}
 
 	.email-container {
@@ -89,6 +119,33 @@ const handleInput = async (input?: string): Promise<void> => {
 
 	.cta-button {
 		max-height: 2.2rem;
+	}
+}
+
+.bottom-container {
+	display: flex;
+	gap: 2rem;
+
+	a {
+		color: $text-secondary;
+		text-decoration: none;
+		transition: all $transition-period;
+		color: $white;
+
+		&:hover {
+			color: $text-success;
+			text-decoration: underline;
+		}
+	}
+
+	a.router-link-active {
+		color: $success;
+	}
+
+	.footer-category {
+		ul {
+			margin-top: 1rem;
+		}
 	}
 }
 </style>

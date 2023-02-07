@@ -19,7 +19,7 @@ const { data } = await useAsyncData(`articles`, () =>
 			subheader="The legend of Zelda: Breath Of The Wild"
 			image-url="/the_legend_of_zelda_full.jpg"
 			:date="new Date('2023-01-01')"
-			@click.prevent="router.push('/articles/breath-of-the-wild')"
+			@click.prevent="router.push('/articles/the-legend-of-zelda')"
 		/>
     <p class="latest-articles">Latest articles</p>
     <div class="latest-articles-container">
