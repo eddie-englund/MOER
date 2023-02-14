@@ -2,7 +2,7 @@
 import { useFooterStore } from './footer-store';
 import { tryCatch } from 'fp-ts/lib/TaskEither';
 import { isLeft, isRight } from 'fp-ts/lib/Either';
-import { emailSchema } from './footer-util';
+import { emailSchema, subscribe } from './footer-util';
 
 const footerStore = useFooterStore();
 
@@ -14,6 +14,13 @@ const handleInput = async (input?: string): Promise<void> => {
 
 	footerStore.email.inital = false;
 };
+
+const config = useRuntimeConfig()
+console.log(config.public.apiBase)
+const handleSubmit = async () => {
+  const sub = await subscribe(footerStore.email.value, config.public.apiBase)
+  console.log(sub)
+}
 </script>
 
 <template>
@@ -43,6 +50,7 @@ const handleInput = async (input?: string): Promise<void> => {
 						</div>
 						<cta-button
 							text="Subscribe"
+              @click="handleSubmit"
 							:disabled="
 								isLeft(footerStore.email.validation) || footerStore.email.inital
 							"
