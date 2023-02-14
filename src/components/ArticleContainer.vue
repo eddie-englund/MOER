@@ -31,7 +31,7 @@ const { data } = await useAsyncData(`article-${props.articleDir}`, () =>
 			<ul>
 				<li>
 					<a class="attribution" :href="data.img.origin">
-						Image from {{ data.img.attribution }}
+						Image: {{ data.img.attribution }}
 					</a>
 				</li>
 				<li v-for="attribute in data.details">
