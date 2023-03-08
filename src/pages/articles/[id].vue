@@ -6,7 +6,7 @@ const route = useRoute();
 <template>
 	<div class="outer-article-container">
 		<bread-crumb
-			:crumbs="[{ to: '/articles', name: 'Articles'}, { to: route.params.id as string, name: 'game' }]"
+			:crumbs="[{ to: '/articles', name: 'Articles'}, { to: route.params.id as string, name: (route.params.id as string).replaceAll('-', ' ') }]"
 		/>
 		<article-container
 			class="article-view"

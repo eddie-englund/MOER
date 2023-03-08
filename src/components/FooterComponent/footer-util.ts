@@ -14,7 +14,6 @@ const expectedResult = z.object({
  * @param email - zod validated email
  */
 export const subscribe = async (email: string, baseUrl: string) => {
-	console.log('doing stuff');
 	return await pipe(
 		tryCatch(
 			async () =>

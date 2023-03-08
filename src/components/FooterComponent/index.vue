@@ -16,10 +16,9 @@ const handleInput = async (input?: string): Promise<void> => {
 };
 
 const config = useRuntimeConfig()
-console.log(config.public.apiBase)
 const handleSubmit = async () => {
+  // TODO: Handle errors and success
   const sub = await subscribe(footerStore.email.value, config.public.apiBase)
-  console.log(sub)
 }
 </script>
 

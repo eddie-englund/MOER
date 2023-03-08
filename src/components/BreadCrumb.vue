@@ -16,3 +16,19 @@ defineProps<{ crumbs: OrderedCrumbs }>();
     </nuxt-link>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.crumb-container {
+  text-transform: capitalize;
+  a {
+			color: $text-secondary;
+			text-decoration: none;
+			transition: all $transition-period;
+
+			&:hover {
+				color: $text-success;
+				text-decoration: underline;
+			}
+		}
+}
+</style>
